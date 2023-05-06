@@ -103,7 +103,7 @@ for frame in range(start_frame, end_frame + 1, 5):
 After a lot of rendering, I managed to produce approximately 4500 images with corresponding labels from 4 different maps. It is now time to start the training process for the object detection model.
 
 # Training
-When it comes to object detection, it's generally more effective to fine-tune an existing model rather than training one from scratch. In my case, I needed a model that could detect both civilian and soldier from the perspective of a drone in real-time. To achieve this, I searched for a model that met my requirements and found the [YOLOv8 model by Ultralytics](https://github.com/ultralytics/ultralytics), which demonstrated high performance and ease of training. To learn more about the training process and settings, you can refer to the GhostRider_train.py and GhostRider_config.yaml files.
+When it comes to object detection, it's generally more effective to fine-tune an existing model rather than training one from scratch. In my case, I needed a model that could detect both civilian and soldier from the perspective of a drone in real-time. To achieve this, I searched for a model that met my requirements and found the [YOLOv8 model by Ultralytics](https://github.com/ultralytics/ultralytics), which demonstrated high performance and ease of training. To learn more about the training process and settings, you can refer to the `GhostRider_train.py` and `GhostRider_config.yaml` files.
 
 ![results](https://user-images.githubusercontent.com/121691820/236648372-1e8999fa-96c5-41e6-b2ce-6325fd380e44.png)
 
