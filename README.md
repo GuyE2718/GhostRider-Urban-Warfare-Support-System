@@ -118,7 +118,7 @@ Although GPS technology would be utilized in a real-world scenario, for the sake
 The code utilizes a predefined list of coordinates that the drone passes over sequentially. In the future, I plan to develop a tool that will automatically generate this list of coordinates so you dont have to do that manually.
 
 # Client
-In the Unity project, I have created a blockout of the buildings using simple shapes and shading, along with a camera that can be controlled through the use of a script called CameraMovement.cs. This allows for easy camera movement and control within the scene.
+In the Unity project, I have created a blockout of the buildings using simple shapes and shading, along with a camera that can be controlled through the use of a script called `CameraMovement.cs`. This allows for easy camera movement and control within the scene.
 
 Additionally, I have included a canvas with a user interface (UI) that I designed, complete with buttons that, when clicked, execute a script that changes the active camera and provides different views of the map.
 
