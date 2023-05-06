@@ -124,7 +124,7 @@ Additionally, I have included a canvas with a user interface (UI) that I designe
 
 ![Screenshot 2023-05-07 010900](https://user-images.githubusercontent.com/121691820/236648410-fe5efb23-00b7-4c1f-94ae-336fe10c247b.png)
 
-I have also created a client game object with a client script that functions similarly to the server, receiving data and running it on a separate thread to prevent UI lag. To place the marker, I call a function on an object within the scene using [PimDeWitte's UnityMainThreadDispatcher](https://github.com/PimDeWitte/UnityMainThreadDispatcher). This tool enables me to call functions on the main thread from within the script, allowing for smooth and efficient execution. For more information on how the client script operates, you can refer to the comments in the GhostRider_client.cs script.
+I have also created a client game object with a client script that functions similarly to the server, receiving data and running it on a separate thread to prevent UI lag. To place the marker, I call a function on an object within the scene using [PimDeWitte's UnityMainThreadDispatcher](https://github.com/PimDeWitte/UnityMainThreadDispatcher). This tool enables me to call functions on the main thread from within the script, allowing for smooth and efficient execution. For more information on how the client script operates, you can refer to the comments in the `GhostRider_client.cs` script.
 
 <br/>
 <br/>
