@@ -1,0 +1,8 @@
+path: G://GhostRider//dataset//data
+train: images/train
+val: images/train
+
+
+#classes
+names:
+  0: human
