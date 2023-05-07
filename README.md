@@ -110,6 +110,9 @@ When it comes to object detection, it's generally more effective to fine-tune an
 
 The model's overall performance is impressive, with a mean average precision (mAP) score of 0.9 on the mAP50-95 metric. This indicates that the model has achieved a high degree of accuracy in detecting and classifying objects in the training data. Furthermore, the model's architecture has been designed to effectively mitigate the vanishing gradient problem, ensuring that it learns complex features and patterns efficiently without encountering difficulties during training. This contributes to the model's robust performance and ability to generalize well to unseen data.
 
+![Untitled](https://user-images.githubusercontent.com/121691820/236676900-bfcd8d8b-6121-421b-b2b4-348c8d059284.png)
+
+
 # Server
 The server has been developed using Python and is designed to communicate with a Unity client that has been coded in C#. Its primary function is to examine images, detect any individuals in the image, and then transmit the drone's coordinates to the client if a person is detected. For security purposes, all data is encrypted using the AES encryption standard.
 
