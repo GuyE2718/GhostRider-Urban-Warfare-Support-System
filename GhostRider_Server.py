@@ -7,14 +7,14 @@ socket = importlib.import_module('socket')
 
 
 class GhostRiderServer:
-    def __init__(self, video_path, model_path, host, port, passcode):
+    def __init__(self, video_path, model_path, host, port, passcode, key=None, iv=None):
         self.video_path = video_path
         self.model_path = model_path
         self.host = host
         self.port = port
         self.passcode = passcode
-        self.key = b'mysecretkey1234' + b'0'  # 16 bytes long (128-bit key)
-        self.iv = b'myiv12345'[:16].ljust(16, b'\x00')
+        self.key = key
+        self.iv = iv
 
     def encrypt_data(self, data):
         cipher = AES.new(self.key, AES.MODE_CBC, self.iv)
@@ -118,5 +118,10 @@ host = 'localhost'
 port = 12345
 passcode = 'mypassword'
 
-server = GhostRiderServer(video_path, model_path, host, port, passcode)
+# Prompt the user for the key and iv
+key = input("Enter the encryption key: ").encode('utf-8')
+iv = input("Enter the IV: ").encode('utf-8')[:16].ljust(16, b'\x00')
+
+
+server = GhostRiderServer(video_path, model_path, host, port, passcode, key, iv)
 server.start()
