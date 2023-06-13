@@ -14,17 +14,20 @@ public class scripttest : MonoBehaviour
     static string HOST = "localhost";
     static int PORT = 12345;
     static string PASSCODE = "mypassword";
-    static byte[] KEY = Encoding.ASCII.GetBytes("mysecretkey12340"); // 16 bytes long (128-bit key)
-    static byte[] IV = Encoding.ASCII.GetBytes("myiv12345".PadRight(16, '\0')); // 16 bytes long
+    public static byte[] IV;
+    public static byte[] KEY; 
 
     private TcpClient clientSocket;
     private NetworkStream networkStream;
 
+    public bool click = false;
     public Marker marker;
     public Image canvasImage;
     public Sprite load;
     public Sprite main;
     public GameObject buttons;
+
+    public GameObject[] logins;
 
     private void Start()
     {
@@ -33,34 +36,42 @@ public class scripttest : MonoBehaviour
         Connect();
     }
 
+
     async void Connect()
     {
-        clientSocket = new TcpClient();
-
-        while (!clientSocket.Connected)
+        if (click)
         {
-            try
+            clientSocket = new TcpClient();
+
+            while (!clientSocket.Connected)
             {
-                //attempt to connect to the server
-                await clientSocket.ConnectAsync(HOST, PORT);
+                try
+                {
+                    //attempt to connect to the server
+                    await clientSocket.ConnectAsync(HOST, PORT);
+                }
+                catch (SocketException)
+                {
+                    //connection failed, wait 1 second and try again
+                    await Task.Delay(1000);
+                }
             }
-            catch (SocketException)
+
+            //send the passcode for authentication
+            networkStream = clientSocket.GetStream();
+            byte[] passcodeBytes = Encoding.ASCII.GetBytes(PASSCODE);
+            await networkStream.WriteAsync(passcodeBytes, 0, passcodeBytes.Length);
+
+            for (int i = 0; i < logins.Length; i++)
             {
-                //connection failed, wait 1 second and try again
-                await Task.Delay(1000);
+                logins[i].SetActive(false);
             }
+            canvasImage.sprite = main;
+            buttons.SetActive(true);
+            //start a new thread to receive and process the data
+            await Task.Run(ProcessData);
         }
-
-        //send the passcode for authentication
-        networkStream = clientSocket.GetStream();
-        byte[] passcodeBytes = Encoding.ASCII.GetBytes(PASSCODE);
-        await networkStream.WriteAsync(passcodeBytes, 0, passcodeBytes.Length);
-
-
-        canvasImage.sprite = main;
-        buttons.SetActive(true);
-        //start a new thread to receive and process the data
-        await Task.Run(ProcessData);
+        
     }
 
     async void ProcessData()
@@ -105,7 +116,11 @@ public class scripttest : MonoBehaviour
         }
     }
 
-
+    public void clickboolactive()
+    {
+        click = true;
+        Connect();
+    }
 
     static byte[] Encrypt(byte[] data)
     {
