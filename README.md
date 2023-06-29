@@ -128,8 +128,8 @@ Additionally, I have included a canvas with a user interface (UI) that I designe
 ![Screenshot 2023-05-07 010900](https://user-images.githubusercontent.com/121691820/236648410-fe5efb23-00b7-4c1f-94ae-336fe10c247b.png)
 
 I have also created a client game object with a client script that functions similarly to the server, receiving data and running it on a separate thread to prevent UI lag. To place the marker, I call a function on an object within the scene using [PimDeWitte's UnityMainThreadDispatcher](https://github.com/PimDeWitte/UnityMainThreadDispatcher). This tool enables me to call functions on the main thread from within the script, allowing for smooth and efficient execution. For more information on how the client script operates, you can refer to the comments in the `GhostRider_client.cs` script.
-
 <br/>
+(update): Implemented additional functionality on both the server and client sides, enabling the manual input of encryption keys and initialization vectors (IVs) prior to establishing a connection. This just adds another layer of security.
 <br/>
 
 Thank you for taking the time to read about my project. This system demonstrates the power of technology in enhancing situational awareness and safety for soldiers operating in urban environments. I am grateful for the support I received from the CSGO modding community. I hope this project inspires others to explore the potential of technology and its applications in real-world scenarios. Please feel free to reach out with any questions, feedback, or suggestions for improvement. Your input is greatly appreciated!
